@@ -1,4 +1,5 @@
 import Content from "./Content";
+import AddItem from "./AddItem";
 import { useState } from "react";
 
 function App() {
@@ -8,6 +9,8 @@ function App() {
     {id: 2, checked: false, item: 'coffee'},
     {id: 3, checked: false, item: 'milk'}
     ])
+
+  const [ newItem, setNewItem ] = useState('')
 
   const handleChecked = (id) => {
     const listItems = items.map((item) => ( item.id === id ? {...item, checked: !item.checked} : item ))
@@ -21,11 +24,14 @@ function App() {
 
   return (
     <div className="App"><h1>Hello!</h1>
+  <AddItem 
+    newItem={newItem} 
+    setNewItem={setNewItem} />
   <Content 
     items={items} 
     handleChecked={handleChecked} 
     handleDelete={handleDelete}
-  />
+    />
     </div>
   );
 }
