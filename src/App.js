@@ -9,13 +9,22 @@ function App() {
     {id: 3, checked: false, item: 'milk'}
     ])
 
+  const handleChecked = (id) => {
+    const listItems = items.map((item) => ( item.id === id ? {...item, checked: !item.checked} : item ))
+    setItems(listItems)
+  }
 
+  const handleDelete = (id) => {
+      const listItems = items.filter((item) => item.id !== id )
+      setItems(listItems)
+  }
 
   return (
     <div className="App"><h1>Hello!</h1>
   <Content 
     items={items} 
-    setItems={setItems}
+    handleChecked={handleChecked} 
+    handleDelete={handleDelete}
   />
     </div>
   );
