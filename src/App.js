@@ -12,10 +12,24 @@ function App() {
 
   const [ newItem, setNewItem ] = useState('')
 
+
+  const setAndSave = (item) => {
+    const listItems = [ ...items, item ]
+    setItems(listItems)
+  } 
+
+  const addItem = (item) => {
+    const id = items.length ? items[items.length - 1].id + 1 : 1
+    const myNewItem = { id, checked: false, item }
+    setAndSave(myNewItem)
+    console.log(myNewItem)
+  }
+
+
   const handleSubmit = (e) => {    
     e.preventDefault()
     console.log('submitted')
-  //  createItem(newItem)
+    addItem(newItem)
     setNewItem('')
   }
 
