@@ -12,6 +12,13 @@ function App() {
 
   const [ newItem, setNewItem ] = useState('')
 
+  const handleSubmit = (e) => {    
+    e.preventDefault()
+    console.log('submitted')
+  //  createItem(newItem)
+    setNewItem('')
+  }
+
   const handleChecked = (id) => {
     const listItems = items.map((item) => ( item.id === id ? {...item, checked: !item.checked} : item ))
     setItems(listItems)
@@ -24,9 +31,11 @@ function App() {
 
   return (
     <div className="App"><h1>Hello!</h1>
-  <AddItem 
-    newItem={newItem} 
-    setNewItem={setNewItem} />
+ <AddItem
+        newItem={newItem}
+        setNewItem={setNewItem}
+        handleSubmit={handleSubmit}
+      />
   <Content 
     items={items} 
     handleChecked={handleChecked} 
