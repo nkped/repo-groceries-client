@@ -1,5 +1,6 @@
 import Content from "./Content";
 import AddItem from "./AddItem";
+import SearchItem from "./SearchItem";
 import { useState } from "react";
 
 function App() {
@@ -7,6 +8,8 @@ function App() {
   const [ items, setItems ] = useState(JSON.parse(localStorage.getItem('groceries')) || [] )
 
   const [ newItem, setNewItem ] = useState('')
+
+  const [ search, setSearch ] = useState('')
 
 
   const setAndSave = (newItems) => {    
@@ -40,15 +43,19 @@ function App() {
   return (
     <div className="App"><h1>Groceries</h1>
       <AddItem
-              newItem={newItem}
-              setNewItem={setNewItem}
-              handleSubmit={handleSubmit}
-            />
-        <Content 
-          items={items} 
-          handleChecked={handleChecked} 
-          handleDelete={handleDelete}
-          />
+        newItem={newItem}
+        setNewItem={setNewItem}
+        handleSubmit={handleSubmit}
+        />
+      <SearchItem 
+        search={search} 
+        setSearch={setSearch} 
+        />
+      <Content 
+        items={items} 
+        handleChecked={handleChecked} 
+        handleDelete={handleDelete}
+        />
     </div>
   );
 }
