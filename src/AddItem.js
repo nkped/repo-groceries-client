@@ -6,7 +6,7 @@ const AddItem = ({ newItem, setNewItem, handleSubmit }) => {
       <input 
         autoFocus
         type="text" 
-        placeholder='Type new grocery item here...' 
+        placeholder='Type new item here...' 
         value={newItem} 
         onChange={(e) => setNewItem(e.target.value)} 
         />
