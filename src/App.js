@@ -61,10 +61,3 @@ function App() {
 }
 
 export default App;
-
-
-/* [ 
-  {id: 1, checked: true, item: 'cookies'},
-  {id: 2, checked: false, item: 'coffee'},
-  {id: 3, checked: false, item: 'milk'}
-  ] */
