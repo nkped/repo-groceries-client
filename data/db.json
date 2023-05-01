@@ -7,18 +7,8 @@
     },
     {
       "id": 2,
-      "checked": true,
+      "checked": false,
       "item": "milk"
-    },
-    {
-      "id": 3,
-      "checked": false,
-      "item": "nuts"
-    },
-    {
-      "id": 4,
-      "checked": false,
-      "item": "bread"
     }
   ]
 }
