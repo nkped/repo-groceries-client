@@ -9,21 +9,6 @@
       "id": 2,
       "checked": false,
       "item": "milk"
-    },
-    {
-      "id": 3,
-      "checked": false,
-      "item": "nuts"
-    },
-    {
-      "id": 4,
-      "checked": true,
-      "item": "bread"
-    },
-    {
-      "id": 5,
-      "checked": false,
-      "item": "tampons"
     }
   ]
 }
