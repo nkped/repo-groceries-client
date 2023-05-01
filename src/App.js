@@ -6,12 +6,10 @@ import { useEffect, useState } from "react";
 function App() {
 
   const [ items, setItems ] = useState( [] )
-
-  //JSON.parse(localStorage.getItem('groceries')) ||
-
   const [ newItem, setNewItem ] = useState('')
-
   const [ search, setSearch ] = useState('')
+  const [ fetchError, setFetchError ] = useState(null)
+  const [ isLoading, setIsloading ] = useState(true)
 
   const API_URL = 'http://localhost:3500/items'
 
@@ -30,10 +28,14 @@ function App() {
         const listItems = await response.json()
         setItems(listItems)        
       } catch (err) {
-        console.error(err.message)        
-        }
+        setFetchError(err.message)        
+      } finally {
+        setIsloading(false)
+      }
     } 
-    (async () => await fetchItems())()      
+    
+    setTimeout(() => fetchItems(), 2000)
+
   }, [])
 
   const addItem = (item) => {
@@ -70,11 +72,15 @@ function App() {
         search={search} 
         setSearch={setSearch} 
         />
-      <Content 
-        items={items.filter((item) => ((item.item).toLowerCase()).includes(search.toLowerCase()))} 
-        handleChecked={handleChecked} 
-        handleDelete={handleDelete}
-        />
+      <main>
+        { isLoading && <p>Loading items...</p> }
+        { fetchError && !isLoading && <p style={{ color: 'red', margin: '10px'}} >{`${fetchError}`}</p>}
+        <Content 
+          items={items.filter((item) => ((item.item).toLowerCase()).includes(search.toLowerCase()))} 
+          handleChecked={handleChecked} 
+          handleDelete={handleDelete}
+          />
+      </main>
     </div>
   );
 }
