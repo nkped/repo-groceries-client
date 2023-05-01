@@ -1,6 +1,7 @@
 import Content from "./Content";
 import AddItem from "./AddItem";
 import SearchItem from "./SearchItem";
+import apiRequest from "./apiRequest";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -12,13 +13,6 @@ function App() {
   const [ isLoading, setIsloading ] = useState(true)
 
   const API_URL = 'http://localhost:3500/items'
-
-
-  const setAndSave = (newItems) => {    
-    setItems(newItems)
-    //localStorage.setItem('groceries', JSON.stringify(newItems) )
-  } 
-
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -38,11 +32,21 @@ function App() {
 
   }, [])
 
-  const addItem = (item) => {
-    const id = items.length ? items[items.length - 1].id + 1 : 1
+  const addItem = async (item) => {
+    const id = items[items.length - 1].id + 1
     const myNewItem = { id, checked: false, item }
-    const listItems = [ ...items, myNewItem ]
-    setAndSave(listItems)
+    const listItems = [...items, myNewItem ]
+    setItems(listItems)
+
+    const postOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(myNewItem)
+    }
+    const result = await apiRequest(API_URL, postOptions);
+    if (result) setFetchError(result);
   }
 
   const handleSubmit = (e) => {    
@@ -53,12 +57,12 @@ function App() {
 
   const handleChecked = (id) => {
     const listItems = items.map((item) => ( item.id === id ? {...item, checked: !item.checked} : item ))
-    setAndSave(listItems)
+  //  setAndSave(listItems)
   }
 
   const handleDelete = (id) => {
       const listItems = items.filter((item) => item.id !== id )
-      setAndSave(listItems)
+//      setAndSave(listItems)
   }
 
   return (
