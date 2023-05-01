@@ -1,5 +1,5 @@
 { "items": [
-    { "id": "1", "checked": "false", "item": "coffee" },
-    { "id": "2", "checked": "true", "item": "milk" }
+    { "id": 1, "checked": false, "item": "coffee" },
+    { "id": 2, "checked": true, "item": "milk" }
     ]
 } 
