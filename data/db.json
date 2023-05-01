@@ -7,7 +7,7 @@
     },
     {
       "id": 2,
-      "checked": true,
+      "checked": false,
       "item": "milk"
     },
     {
@@ -17,8 +17,13 @@
     },
     {
       "id": 4,
-      "checked": false,
+      "checked": true,
       "item": "bread"
+    },
+    {
+      "id": 5,
+      "checked": false,
+      "item": "tampons"
     }
   ]
 }
